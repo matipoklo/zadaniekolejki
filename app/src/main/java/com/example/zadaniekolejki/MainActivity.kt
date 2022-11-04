@@ -13,41 +13,55 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //Kolejka
-        val queue: Queue<Int> = LinkedList<Int>()
-        val btnDodajDoKolejki = findViewById<Button>(R.id.btnDodaj)
-        val btnUsunZKolejki = findViewById<Button>(R.id.btnUsun)
-        var txtPierwszyWKolejce = findViewById<TextView>(R.id.txtPierwszy)
-        var txtIloscWKolejce = findViewById<TextView>(R.id.textView2)
-        val txtOstatni = findViewById<TextView>(R.id.txtOstatni)
-        var pierwszy = 0
-        var ostatni = 0
-        var numerKolejki = 1
-        var dlugosc = Toast.LENGTH_SHORT
+        val kolejka: Queue<Int> = LinkedList<Int>()
+        val butt_dodaj_do_kolejki = findViewById<Button>(R.id.btnDodaj)
+        val butt_usun_z_kolejki = findViewById<Button>(R.id.btnUsun)
+        val butt_pierw_i_ost_w_kolejce = findViewById<Button>(R.id.btnPokaz)
+        val txt_ile_w_kolejce = findViewById<TextView>(R.id.textView2)
+        val txt_pierwszy_w_kolejce = findViewById<TextView>(R.id.txtPierwszy)
+        val txt_ostatni_w_kolejce = findViewById<TextView>(R.id.txtOstatni)
+        val length = Toast.LENGTH_SHORT
+        var numer = 1
+        var ilosc_kolejka = 0
 
-        btnDodajDoKolejki.setOnClickListener() {
-            queue.add(numerKolejki)
-            numerKolejki += 1
-            txtIloscWKolejce.text = txtIloscWKolejce.toString() + numerKolejki
-            if (!queue.isEmpty()) {
-                val first = queue.element()
-                val last = queue.last()
-                txtIloscWKolejce.text = first.toString()
-                txtOstatni.text = last.toString()
+
+        butt_dodaj_do_kolejki.setOnClickListener {
+            Toast.makeText(applicationContext, "Dodano do kolejki numer: " + numer, length).show()
+            kolejka.add(numer)
+            numer += 1
+            ilosc_kolejka += 1
+            txt_ile_w_kolejce.text = "Ilosc liczb w kolejce: " + ilosc_kolejka.toString()
+        }
+
+        butt_usun_z_kolejki.setOnClickListener {
+            if (!kolejka.isEmpty()) {
+                Toast.makeText(
+                    applicationContext,
+                    "Usunieto numer: " + kolejka.element() + " z kolejki!",
+                    length
+                ).show()
+                kolejka.remove()
+                ilosc_kolejka -= 1
+                txt_ile_w_kolejce.text = "Ilosc elementow w kolejce: " + ilosc_kolejka.toString()
+
+            } else {
+                Toast.makeText(applicationContext, "Brak liczb w kolejce", length).show()
             }
-            btnUsunZKolejki.setOnClickListener() {
-                if (!queue.isEmpty()) {
-                    Toast.makeText(
-                        applicationContext,
-                        "Usunieto numer: " + queue.element() + " z kolejki!",
-                        dlugosc
-                    ).show()
-                    queue.remove()
-                    txtIloscWKolejce.text = txtIloscWKolejce.toString() + numerKolejki
-                } else {
-                    Toast.makeText(applicationContext, "Brak liczb w kolejce", dlugosc).show()
-                }
+        }
+        butt_pierw_i_ost_w_kolejce.setOnClickListener {
+            if (!kolejka.isEmpty()) {
+                val pierw = kolejka.element()
+                val ost = kolejka.last()
+                txt_pierwszy_w_kolejce.text = "Pierwszy Element w kolejce: " + pierw.toString()
+                txt_ostatni_w_kolejce.text = "Ostatni Element w kolejce: " + ost.toString()
+            } else {
+                Toast.makeText(applicationContext, "Brak osob w kolejce", length).show()
+                txt_pierwszy_w_kolejce.text = "brak liczb w kolejce"
+                txt_ostatni_w_kolejce.text = "brak liczb w kolejce"
             }
-            //Stos
+        }
+
+        //Stos
             val stos = LinkedList<Int>()
             val butt_dodaj_do_stosu = findViewById<Button>(R.id.btnDodaj3)
             val butt_usun_ze_stosu = findViewById<Button>(R.id.btnUsun2)
@@ -58,14 +72,15 @@ class MainActivity : AppCompatActivity() {
             butt_dodaj_do_stosu.setOnClickListener {
                 if(edittext_dodaj_do_stosu.text.toString() != "") {
                     val liczba = edittext_dodaj_do_stosu.text.toString().toInt()
-                    Toast.makeText(applicationContext, "Dodano do stosu liczbe: " + liczba, dlugosc).show()
+                    Toast.makeText(applicationContext, "Dodano do stosu liczbe: " + liczba, length).show()
                     stos.add(liczba)
                     ilosc_ele_w_stosie += 1
-                    txt_ile_w_stosie.text = ilosc_ele_w_stosie.toString()
+                    txt_ile_w_stosie.text = "Ilosc Elementow w stosie: " + ilosc_ele_w_stosie.toString()
+
                 }
                 else
                 {
-                    Toast.makeText(applicationContext, "Wpisz do pola nad przyciskiem, jaka liczbe chcesz dodac", dlugosc).show()
+                    Toast.makeText(applicationContext, "Wpisz do pola nad przyciskiem, jaka liczbe chcesz dodac", length).show()
                 }
 
             }
@@ -74,16 +89,16 @@ class MainActivity : AppCompatActivity() {
                 if (!stos.isEmpty())
                 {
                     val liczba = stos.last()
-                    Toast.makeText(applicationContext, "usunieto do stosu liczbe: " + liczba, dlugosc).show()
+                    Toast.makeText(applicationContext, "usunieto do stosu liczbe: " + liczba, length).show()
                     stos.removeLast()
                     ilosc_ele_w_stosie -= 1
-                    txt_ile_w_stosie.text = ilosc_ele_w_stosie.toString()
+                    txt_ile_w_stosie.text = "Ilosc Elementow w stosie: " + ilosc_ele_w_stosie.toString()
                 }
                 else
                 {
-                    Toast.makeText(applicationContext, "Stos jest pusty", dlugosc).show()
+                    Toast.makeText(applicationContext, "Stos jest pusty", length).show()
                 }
             }
         }
     }
-}
+

@@ -32,18 +32,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.679" />
 
-    <TextView
-        android:id="@+id/txtOstatni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ostatni Element w kolejce: "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
-
     <Button
         android:id="@+id/btnUsun"
         android:layout_width="158dp"
@@ -108,10 +96,22 @@
         android:text="Pierwszy Element w kolejce: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="0.171" />
+
+    <TextView
+        android:id="@+id/txtOstatni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ostatni Element w kolejce: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.216" />
 
     <TextView
         android:id="@+id/textView6"
@@ -150,5 +150,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.591" />
+
+    <Button
+        android:id="@+id/btnPokaz"
+        android:layout_width="162dp"
+        android:layout_height="39dp"
+        android:text="Pokaz elementy"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
